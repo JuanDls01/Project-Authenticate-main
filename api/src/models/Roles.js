@@ -11,8 +11,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ENUM("admin", "user"),
     },
   });
 };

@@ -9,9 +9,9 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/products', productsRouter);
-router.use('/users', usersRouter);
-router.use('/auth', authRouter);
+router.use('/api/products', productsRouter);
+router.use('/api/users', usersRouter);
+router.use('/api/auth', authRouter);
 
 
 module.exports = router;

@@ -1,15 +1,10 @@
 const { Router } = require('express');
-// const {  createProduct, getProducts, getProductById, updateProductById, deleteProductById } = require('../controllers/product');
+const { signUp, logIn } = require('../controllers/auth.controller');
 
 const router = Router();
 
-router.get('/', (req,res,next)=>{
-    try{
-        res.send('hola');
-    }
-    catch (error) {
-        next(error)
-    }
-});
+router.post('/signup', signUp);
+
+router.post('/login', logIn);
 
 module.exports = router;
