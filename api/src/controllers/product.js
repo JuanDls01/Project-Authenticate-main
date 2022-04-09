@@ -16,16 +16,39 @@ const getProducts = async (req,res) => {
     res.json(products);
 }
 
-const getProductById = (req,res) => {
-    
+const getProductById = async (req,res) => {
+    const {productId} = req.params;
+    const product = await Products.findOne({
+        where: {
+            id: productId,
+        }
+    });
+    res.status(200).json(product);
 }
 
-const updateProductById = (req,res) => {
-    
+const updateProductById = async (req,res) => {
+    const {productId} = req.params;
+    const newProps = req.body;
+    // console.log('newProps:',newProps);
+    const updatedProduct = await Products.update(newProps, {
+            where: {
+                id: productId
+            }
+        }
+    )
+    // console.log('updatedProduct:', updatedProduct)
+    res.status(200).json(updatedProduct);
 }
 
-const deleteProductById = (req,res) => {
-    
+const deleteProductById = async (req,res) => {
+    const {productId} = req.params;
+    const productDeleted = await Products.destroy({
+        where: {
+            id: productId
+        }
+    })
+    console.log('productDeleted:', productDeleted)
+    res.status(204).json(productDeleted);
 }
 
 module.exports = {
